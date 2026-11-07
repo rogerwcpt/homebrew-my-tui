@@ -58,16 +58,7 @@ def release_checksums(version: str) -> dict[str, str]:
 
 
 def update_formula(text: str, version: str, checksums: dict[str, str]) -> str:
-    updated, count = re.subn(
-        r'^(\s*)version "[^"]+"',
-        rf'\1version "{version}"',
-        text,
-        count=1,
-        flags=re.MULTILINE,
-    )
-    if count != 1:
-        raise SystemExit("The formula has no version line.")
-
+    updated = text
     for archive, digest in checksums.items():
         pattern = (
             rf'^(\s*)url "https://github.com/{re.escape(REPOSITORY)}/releases/download/'

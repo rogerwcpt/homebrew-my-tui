@@ -1,7 +1,6 @@
 class MyTui < Formula
   desc "Terminal-first session orchestrator"
   homepage "https://github.com/rogerwcpt/weissdigital-my-tui"
-  version "0.1.0"
   license "MIT"
 
   on_macos do
