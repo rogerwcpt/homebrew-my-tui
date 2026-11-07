@@ -5,8 +5,8 @@ class MyTui < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/rogerwcpt/weissdigital-my-tui/releases/download/v0.1.0/my-tui-0.1.0-osx-arm64.tar.gz"
-      sha256 "bafdcc58594a9817152b0063fbaf36fe491b3d9be1ec522d8f3b9edbd039134c"
+      url "https://github.com/rogerwcpt/weissdigital-my-tui/releases/download/v0.1.1/my-tui-0.1.1-osx-arm64.tar.gz"
+      sha256 "feb27cbc4314fb2b46fc197a49ba2dbd1f96719ce2952d29c57030e1dca20d27"
     end
   end
 
