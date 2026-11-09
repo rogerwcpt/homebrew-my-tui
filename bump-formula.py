@@ -3,6 +3,9 @@
 
 Usage: python3 bump-formula.py 0.1.5
        python3 bump-formula.py v0.1.5
+
+The Update Homebrew formula workflow takes the same version when you
+run it from the Actions tab, so the number does not have to be committed.
 """
 
 from __future__ import annotations
