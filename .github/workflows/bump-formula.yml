@@ -1,0 +1,44 @@
+# Actions → Update Homebrew formula → Run workflow.
+# Type the my-tui release (0.1.5 or v0.1.5). The script downloads that
+# release's SHA256SUMS, updates Formula/my-tui.rb, and pushes the commit
+# to the branch you selected. Run it from main.
+
+name: Update Homebrew formula
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "my-tui release (0.1.5 or v0.1.5)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bump-homebrew-formula
+  cancel-in-progress: false
+
+jobs:
+  bump:
+    name: Update Homebrew formula
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out tap
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Bump formula
+        env:
+          VERSION: ${{ inputs.version }}
+        run: python3 bump-formula.py "$VERSION"
